@@ -12,7 +12,7 @@ namespace Zadanie2
             device2.PowerOn();
             IDocument doc1;
             device1.Scan(out doc1);
-            device1.Send(in doc1, device2);
+            device1.Send(doc1, device2);
         }        
     }
 }

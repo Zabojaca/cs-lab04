@@ -9,7 +9,7 @@ namespace Zadanie2
 {    
     public class MultifunctionalDevice : Copier, IFax
     {
-        public void Send(in IDocument document, IFax reciever)
+        public void Send(IDocument document, IFax reciever)
         {
             if(state == IDevice.State.on)
             {
@@ -17,9 +17,10 @@ namespace Zadanie2
                 reciever.Recieve(document);
             }            
         }
-        public void Recieve(in IDocument document)
+
+        public void Recieve(IDocument document)
         {
-            if(state == IDevice.State.off)
+            if(state == IDevice.State.on)
             {
                 Console.WriteLine($"{DateTime.Now} Recieved: {document.GetFileName()}");
             }
