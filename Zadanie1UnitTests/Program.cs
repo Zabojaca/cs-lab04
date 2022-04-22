@@ -5,7 +5,6 @@ using System.IO;
 
 namespace Zadanie1UnitTests
 {
-
     public class ConsoleRedirectionToStringWriter : IDisposable
     {
         private StringWriter stringWriter;
