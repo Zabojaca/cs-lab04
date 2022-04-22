@@ -293,7 +293,7 @@ namespace Zadanie2UnitTests
             {
                 IDocument doc1 = new PDFDocument("aaa.pdf");
                 MultifunctionalDevice reciever = new MultifunctionalDevice();
-                multifunctionalDevice.Send(in doc1, reciever);
+                multifunctionalDevice.Send(doc1, reciever);
                 Assert.IsTrue(consoleOutput.GetOutput().Contains("Sent"));
             }
             Assert.AreEqual(currentConsoleOut, Console.Out);
@@ -311,7 +311,7 @@ namespace Zadanie2UnitTests
             {
                 IDocument doc1 = new PDFDocument("aaa.pdf");
                 MultifunctionalDevice reciever = new MultifunctionalDevice();
-                multifunctionalDevice.Send(in doc1, reciever);
+                multifunctionalDevice.Send(doc1, reciever);
                 Assert.IsFalse(consoleOutput.GetOutput().Contains("Sent"));
             }
             Assert.AreEqual(currentConsoleOut, Console.Out);
@@ -328,7 +328,7 @@ namespace Zadanie2UnitTests
             using (var consoleOutput = new ConsoleRedirectionToStringWriter())
             {
                 IDocument doc1 = new PDFDocument("aaa.pdf");
-                multifunctionalDevice.Recieve(in doc1);
+                multifunctionalDevice.Recieve(doc1);
                 Assert.IsTrue(consoleOutput.GetOutput().Contains("Recieved"));
             }
             Assert.AreEqual(currentConsoleOut, Console.Out);
@@ -345,7 +345,7 @@ namespace Zadanie2UnitTests
             using (var consoleOutput = new ConsoleRedirectionToStringWriter())
             {
                 IDocument doc1 = new PDFDocument("aaa.pdf");
-                multifunctionalDevice.Recieve(in doc1);
+                multifunctionalDevice.Recieve(doc1);
                 Assert.IsFalse(consoleOutput.GetOutput().Contains("Recieved"));
             }
             Assert.AreEqual(currentConsoleOut, Console.Out);
