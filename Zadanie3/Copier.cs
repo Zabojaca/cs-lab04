@@ -8,37 +8,34 @@ namespace Zadanie3
 
         public void Print(in IDocument document)
         {
+            Printer.PowerOn();
             Printer.Print(in document);
+            Printer.PowerOff();
         }
 
         public void Scan(out IDocument document, IDocument.FormatType formatType)
         {
+            Scanner.PowerOn();
             Scanner.Scan(out document, formatType);
+            Scanner.PowerOff();
         }
         public void Scan(out IDocument document)
         {
+            Scanner.PowerOn();
             Scanner.Scan(out document, IDocument.FormatType.PDF);
+            Scanner.PowerOff();
         }
 
         public void ScanAndPrint()
         {
             IDocument document;
-            Scanner.Scan(out document, IDocument.FormatType.JPG);
-            Printer.Print(document);
-        }
-
-        public void PowerOn()
-        {
-            base.PowerOn();
             Scanner.PowerOn();
-            Printer.PowerOn();           
-        }
-
-        public void PowerOff()
-        {
-            base.PowerOff();
+            Scanner.Scan(out document, IDocument.FormatType.JPG);
             Scanner.PowerOff();
-            Printer.PowerOff();            
+
+            Printer.PowerOn();
+            Printer.Print(document);
+            Printer.PowerOff();
         }
     }
 }

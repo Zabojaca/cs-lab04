@@ -51,6 +51,7 @@ namespace Zadanie1
                 document = null;
             }
         }
+
         public void Scan(out IDocument document)
         {            
             Scan(out document, IDocument.FormatType.PDF);   

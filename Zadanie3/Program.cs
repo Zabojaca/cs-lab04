@@ -29,6 +29,12 @@
             multi1.Send(doc4, multi2);
             multi1.PowerOff();
             multi2.PowerOff();
+
+            IDocument doc5;
+            multi1.PowerOn();
+            multi1.Scan(out doc1, formatType: IDocument.FormatType.JPG);
+            multi1.Scan(out doc1, formatType: IDocument.FormatType.TXT);
+            multi1.Scan(out doc1, formatType: IDocument.FormatType.PDF);
         }
     }
 }

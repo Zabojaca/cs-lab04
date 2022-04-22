@@ -9,45 +9,74 @@ namespace Zadanie3
 
         public void Print(in IDocument document)
         {
-            Printer.PowerOn();
-            Printer.Print(in document);
-            Printer.PowerOff();
+            if (state == IDevice.State.on)
+            {
+                Printer.PowerOn();
+                Printer.Print(in document);
+                Printer.PowerOff();
+            }
         }
 
         public void Scan(out IDocument document, IDocument.FormatType formatType)
         {
-            document = null;
+            if (state == IDevice.State.on)
+            {
+                Scanner.PowerOn();
+                Scanner.Scan(out document, formatType);
+                Scanner.PowerOff();
+            }
+            else
+            {
+                document = null;
+            }
         }
+
         public void Scan(out IDocument document)
         {
-            Scanner.PowerOn();
-            Scanner.Scan(out document, IDocument.FormatType.PDF);
-            Scanner.PowerOff();
+            if (state == IDevice.State.on)
+            {
+                Scanner.PowerOn();
+                Scanner.Scan(out document, IDocument.FormatType.PDF);
+                Scanner.PowerOff();
+            }
+            else
+            {
+                document = null;
+            }
         }
 
         public void ScanAndPrint()
         {
-            IDocument document;
-            Scanner.PowerOn();
-            Scanner.Scan(out document, IDocument.FormatType.JPG);
-            Scanner.PowerOff();
-            Printer.PowerOn();
-            Printer.Print(document);
-            Printer.PowerOff();
+            if (state == IDevice.State.on)
+            {
+                IDocument document;
+                Scanner.PowerOn();
+                Scanner.Scan(out document, IDocument.FormatType.JPG);
+                Scanner.PowerOff();
+                Printer.PowerOn();
+                Printer.Print(document);
+                Printer.PowerOff();
+            }
         }
 
         public void Send(IDocument document, IFax reciever)
         {
-            Fax.PowerOn();
-            Fax.Send(document, reciever);
-            Fax.PowerOff();
+            if (state == IDevice.State.on)
+            {
+                Fax.PowerOn();
+                Fax.Send(document, reciever);
+                Fax.PowerOff();
+            }
         }
 
         public void Recieve(IDocument document)
         {
-            Fax.PowerOn();
-            Fax.Recieve(document);
-            Fax.PowerOff();
+            if (state == IDevice.State.on)
+            {
+                Fax.PowerOn();
+                Fax.Recieve(document);
+                Fax.PowerOff();
+            }
         }
     }
 }
