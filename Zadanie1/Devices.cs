@@ -29,6 +29,7 @@ namespace Zadanie1
         {
             state = IDevice.State.on;
             Console.WriteLine("Device is on ...");
+            Counter++;
         }
 
         public int Counter { get; private set; } = 0;
