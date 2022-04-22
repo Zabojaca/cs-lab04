@@ -11,8 +11,6 @@
 
             IDocument doc2;
             xerox.Scan(out doc2);
-            IDocument doc3;
-            xerox.Scan(out doc3);
 
             xerox.ScanAndPrint();
             System.Console.WriteLine(xerox.Counter);
